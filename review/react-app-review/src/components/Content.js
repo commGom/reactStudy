@@ -4,8 +4,8 @@ class Content extends Component {
     render() {
         return (
             <div>
-                <h2>HTML</h2>
-                HTML is HyperText Markup Language.
+                <h2>{this.props.title}</h2>
+                {this.props.desc}
             </div>
         );
     }

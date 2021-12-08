@@ -5,8 +5,8 @@ class Subject extends Component {
         return (
             <div>
                 <header>
-                    <h1>WEB</h1>
-                    World Wide Web!
+                    <h1>{this.props.title}</h1>
+                    {this.props.sub}
                 </header>
             </div>
         );

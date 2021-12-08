@@ -2,12 +2,25 @@ import React, { Component } from 'react';
 
 class TOC extends Component {
     render() {
+        const contents = this.props.contents;
+        const list = [];
+        for (let i = 0; i < contents.length; i++) {
+            const element = <li key={contents[i].id}>
+                <a href={contents[i].id + ".html"}
+                    onClick={
+                        (event) => {
+                            event.preventDefault();
+                        }
+                    }>
+                    {contents[i].title}
+                </a>
+            </li>;
+            list.push(element);
+        }
         return (
             <div>
                 <ul>
-                    <li><a href="1.html">HTML</a></li>
-                    <li><a href="2.html">CSS</a></li>
-                    <li><a href="3.html">JavaScript</a></li>
+                    {list}
                 </ul>
             </div>
         );
