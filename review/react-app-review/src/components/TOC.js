@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class TOC extends Component {
     render() {
+        const changePage = this.props.changePage;
         const contents = this.props.contents;
         const list = [];
         for (let i = 0; i < contents.length; i++) {
@@ -10,6 +11,7 @@ class TOC extends Component {
                     onClick={
                         (event) => {
                             event.preventDefault();
+                            changePage(contents[i].id);
                         }
                     }>
                     {contents[i].title}

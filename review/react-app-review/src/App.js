@@ -10,6 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       subject: { title: 'WEB', sub: 'World Wide Web!' },
       contents: [
         { id: 1, title: 'HTML', desc: 'HTML is for information.' },
@@ -21,11 +22,22 @@ class App extends Component {
     }
   }
   render() {
+    let title = 'Welcome';
+    let desc = 'React Web Application';
+    for (let i = 0; i < this.state.contents.length; i++) {
+      const element = this.state.contents[i];
+      if (element.id === this.state.id) {
+        title = element.title;
+        desc = element.desc;
+        break;
+      }
+    }
+    console.log(`확인 : ${title}, ${desc}`);
     return (
       <div className="App">
         <Subject title={this.state.subject.title} sub={this.state.subject.sub}></Subject>
-        <TOC contents={this.state.contents}></TOC>
-        <Content title={this.state.contents[0].title} desc={this.state.contents[0].desc}></Content>
+        <TOC contents={this.state.contents} changePage={(value) => this.setState({ id: value })}></TOC>
+        <Content title={title} desc={desc}></Content>
       </div>
     );
   }
