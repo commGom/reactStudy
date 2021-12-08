@@ -3,9 +3,11 @@ import paper from '../assets/images/paper.png';
 class Paper extends Component {
     render() {
         return (
-            <div>
-                <img src={paper} alt="" />
-            </div>
+            <img src={paper} alt="" alt=""
+                onClick={() => {
+                    console.log('보 : 2');
+                    this.props.onSubmit(2);
+                }} />
         );
     }
 }

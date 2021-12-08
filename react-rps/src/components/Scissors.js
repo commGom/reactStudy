@@ -4,9 +4,11 @@ import scissors from '../assets/images/scissors.png';
 class Scissors extends Component {
     render() {
         return (
-            <div>
-                <img src={scissors} alt=""></img>
-            </div>
+            <img src={scissors} alt=""
+                onClick={() => {
+                    console.log('가위 : 0');
+                    this.props.onSubmit(0);
+                }} />
         );
     }
 }

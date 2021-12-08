@@ -3,9 +3,11 @@ import rock from '../assets/images/rock.png';
 class Rock extends Component {
     render() {
         return (
-            <div>
-                <img src={rock} alt="" />
-            </div>
+            <img src={rock} alt="" alt=""
+                onClick={() => {
+                    console.log('바위 : 1');
+                    this.props.onSubmit(1);
+                }} />
         );
     }
 }
