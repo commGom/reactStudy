@@ -3,7 +3,10 @@ import paper from '../images/paper.png';
 class Paper extends Component {
     render() {
         return (
-            <img src={paper} alt="" />
+            <img src={paper} alt=""
+                onClick={() => {
+                    this.props.onSubmit(2);
+                }} />
         );
     }
 }
