@@ -2,106 +2,35 @@ import React, { Component } from 'react';
 
 class Article extends Component {
     render() {
+        const examples = this.props.examples;
+        const th = <tr><td><div><strong>{examples.th1}</strong></div></td><td colSpan="3"><div><strong>{examples.th2}</strong></div></td><td><div><strong>{examples.th3}</strong></div></td></tr>;
+        const tbody = [];
+        for (let i = 0; i < examples.tries.length; i++) {
+            const element = <tr>
+                <td>
+                    <div><strong>{examples.tries[i].trycount}</strong></div>
+                </td>
+                <td>
+                    <div>{examples.tries[i].firstNum}</div>
+                </td>
+                <td>
+                    <div>{examples.tries[i].secondNum}</div>
+                </td>
+                <td>
+                    <div>{examples.tries[i].thirdNum}</div>
+                </td>
+                <td>
+                    <div>{examples.tries[i].result}</div>
+                </td>
+            </tr>;
+            tbody.push(element);
+        }
         return (
             <div>
                 <table border="1">
                     <tbody>
-                        <tr>
-                            <td>
-                                <div><strong>횟수</strong></div>
-                            </td>
-                            <td colSpan="3">
-                                <div><strong>숫자</strong></div>
-                            </td>
-                            <td>
-                                <div><strong>판정</strong></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><strong>1</strong></div>
-                            </td>
-                            <td>
-                                <div>8</div>
-                            </td>
-                            <td>
-                                <div>3</div>
-                            </td>
-                            <td>
-                                <div>0</div>
-                            </td>
-                            <td>
-                                <div>아웃</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><strong>2</strong></div>
-                            </td>
-                            <td>
-                                <div>6</div>
-                            </td>
-                            <td>
-                                <div>5</div>
-                            </td>
-                            <td>
-                                <div>9</div>
-                            </td>
-                            <td>
-                                <div>0S 1B</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><strong>3</strong></div>
-                            </td>
-                            <td>
-                                <div>2</div>
-                            </td>
-                            <td>
-                                <div>6</div>
-                            </td>
-                            <td>
-                                <div>4</div>
-                            </td>
-                            <td>
-                                <div>1S 1B</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><strong>4</strong></div>
-                            </td>
-                            <td>
-                                <div>1</div>
-                            </td>
-                            <td>
-                                <div>2</div>
-                            </td>
-                            <td>
-                                <div>6</div>
-                            </td>
-                            <td>
-                                <div>1S 2B</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><strong>5</strong></div>
-                            </td>
-                            <td>
-                                <div>2</div>
-                            </td>
-                            <td>
-                                <div>1</div>
-                            </td>
-                            <td>
-                                <div>6</div>
-                            </td>
-                            <td>
-                                <div>3S 0B</div>
-                            </td>
-                        </tr>
+                        {th}
+                        {tbody}
                     </tbody>
                 </table>
             </div>
