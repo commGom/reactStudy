@@ -5,7 +5,7 @@ class Subject extends Component {
         return (
             <div>
                 <header>
-                    <h1>{this.props.title}</h1>
+                    <h1 onClick={this.props.onChangeMode}>{this.props.title}</h1>
                     {this.props.sub}
                 </header>
             </div>
