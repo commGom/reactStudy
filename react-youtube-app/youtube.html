@@ -23,6 +23,7 @@
       const search="슬기로운";
       const key="AIzaSyAOhDH_jhl6cmZN9Sf2yhfvGhZQ0yI6HvE";
       const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&maxResults=50&q=${search}`;
+      console.log(url);
       const data = axios({
           url: url,
           method: 'get',
