@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const data = axios({
+            url: 'http://ggoreb.com/ajax/json/data3.jsp',
+            method: 'get',
+        });
+        data.then(function (result) {
+            console.log(result);
+            console.log(result.data);
+            const data=result.data;
+            data.forEach((value)=>{
+                const addressList=value.address;
+                const age=value.age;
+                const name=value.name;
+                console.log(age,name);
+                addressList.forEach((address)=>{console.log(address)});
+            })
+        });
+    </script>
+</body>
+
+</html>

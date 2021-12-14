@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>URL</th>
+        <th>VideoID</th>
+      </tr>
+    </thead>
+  </table>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+      const table=document.querySelector('table');
+      const search="슬기로운";
+      const key="AIzaSyAOhDH_jhl6cmZN9Sf2yhfvGhZQ0yI6HvE";
+      const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&maxResults=50&q=${search}`;
+      const data = axios({
+          url: url,
+          method: 'get',
+      });
+      data.then(function (result) {
+          console.log(result);
+          console.log(result.data);
+          const totalData=result.data.items;
+          totalData.forEach((data)=>{
+            const title=data.snippet.title;
+            const description=data.snippet.description;
+            const thumbnailURL=data.snippet.thumbnails.default.url;
+            const videoId=data.id.videoId;
+            console.log(`제목 : ${title}`);
+            console.log(`영상소개 : ${description}`);
+            console.log(`썸네일 url ${thumbnailURL}`);
+            console.log(`영상 고유 번호 : ${videoId}`);
+            const tr=document.createElement('tr');
+            tr.innerHTML=
+            `<td>${title}</td>
+            <td>${description}</td>
+            <td>${thumbnailURL}</td>
+            <td>${videoId}</td>`
+            table.appendChild(tr);
+          });
+
+      });
+  </script>
+</body>
+</html>

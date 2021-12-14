@@ -14,7 +14,7 @@ const UpdateMember = (props) => {
                 <h1>회원정보 수정</h1>
                 <form>
                     <p>아이디 <input type="text" name="id" value={member.id}
-                        onChange={(e) => { setMember({ id: e.target.value }) }} /></p>
+                        readOnly /></p>
                     <p>비밀번호 <input type="text" name="password" value={member.password}
                         onChange={(e) => { setMember({ password: e.target.value }) }} /></p>
                     <p>이름 <input type="text" name="name" value={member.name}
