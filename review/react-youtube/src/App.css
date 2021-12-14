@@ -1,0 +1,17 @@
+body {
+  padding: 2em;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+}
+
+.content-container {
+  display: flex;
+}
+.image {
+  display: flex;
+  flex-basis: 200px;
+  margin: auto 0;
+}
