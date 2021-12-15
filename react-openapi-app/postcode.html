@@ -8,18 +8,22 @@
   <title>Document</title>
 </head>
 <section>
-<h1>영문 주소 변환 <input type="button" onclick="sample6_execDaumPostcode()" value="주소 선택"></h1>
+  <h1>영문 주소 변환 <input type="button" onclick="sample6_execDaumPostcode()" value="주소 선택"></h1>
   <dl>
-    <dt>우편 번호</dt> : 
-    <dd><input type="text" id="sample6_postcode" readonly> <button id="copy-btn">복사</button></dd>
+    <dt>우편 번호</dt> :
+    <dd><input type="text" id="sample6_postcode" readonly> <button id="code-copy-btn">복사</button></dd>
     <dt>한글 도로명 주소</dt>
-    <dd><span id="kAddr-val"></span></dd>
+    <dd><span id="kAddr-val"></span><button id="kAddr-copy-btn">복사</button></dd>
     <dt>영문 도로명 주소</dt>
-    <dd><span id="eAddr-val"></span></dd>
+    <dd><span id="eAddr-val"></span><button id="eAddr-copy-btn">복사</button></dd>
   </dl>
 </section>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+  const postcode = document.querySelector("#sample6_postcode");
+  const codeCopyBtn = document.querySelector("#code-copy-btn");
+  const kAddrCopyBtn = document.querySelector("#kAddr-copy-btn");
+  const eAddrCopyBtn = document.querySelector("#eAddr-copy-btn");
   function sample6_execDaumPostcode() {
     new daum.Postcode({
       oncomplete: function (data) {
@@ -60,18 +64,44 @@
           if (eExtraAddr !== '') {
             eExtraAddr = ' (' + eExtraAddr + ')';
           }
-        } 
+        }
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
         console.log(data.zonecode);
         console.log(kAddr, kExtraAddr);
         console.log(eAddr, eExtraAddr);
-        document.querySelector("#sample6_postcode").value=data.zonecode;
-        document.querySelector("#kAddr-val").innerText=kAddr;
-        document.querySelector("#eAddr-val").innerText=eAddr;
+        postcode.value = data.zonecode;
+        document.querySelector("#kAddr-val").innerText = kAddr;
+        document.querySelector("#eAddr-val").innerText = eAddr;
       }
     }).open();
   }
-  
+  codeCopyBtn.addEventListener("click", () => {
+    postcode.select();
+    document.execCommand("copy");
+    alert(`'${postcode.value}' 가\n 복사되었습니다.`)
+  });
+
+  kAddrCopyBtn.addEventListener("click", () => {
+    const kAddrVal = document.querySelector("#kAddr-val").innerText;
+    const textArea = document.createElement('textarea');
+    document.body.appendChild(textArea);
+    textArea.value = kAddrVal;
+    textArea.select();
+    document.execCommand('copy');
+    alert(`'${kAddrVal}' 가\n 복사되었습니다.`);
+    document.body.removeChild(textArea);
+
+  });
+  eAddrCopyBtn.addEventListener("click", () => {
+    const eAddrVal = document.querySelector("#eAddr-val").innerText;
+    const textArea = document.createElement('textarea');
+    document.body.appendChild(textArea);
+    textArea.value = eAddrVal;
+    textArea.select();
+    document.execCommand('copy');
+    alert(`'${eAddrVal}' 가\n 복사되었습니다.`);
+    document.body.removeChild(textArea);
+  });
 </script>
 
 </body>
