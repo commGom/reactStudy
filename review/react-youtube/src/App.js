@@ -31,29 +31,11 @@ function App() {
       console.log(videoInfo);
       setInfo(videoInfo);
     });
-  }, []);
+  }, [search]);
 
   console.log(info);
   function onSearch(newSearch) {
     setSearch(newSearch);
-    const data = axios({
-      url: URL,
-      method: 'get'
-    });
-    data.then((result) => {
-      const videoInfo = [];
-      for (let item of result.data.items) {
-
-        const title = item.snippet.title;
-        const desc = item.snippet.description;
-        const url = item.snippet.thumbnails.default.url;
-        const videoId = item.id.videoId;
-        // console.log(title, desc, url, videoId);
-        videoInfo.push({ title: title, desc: desc, url: url, videoId: videoId })
-      }
-      console.log(videoInfo);
-      setInfo(videoInfo);
-    });
   }
   return (
     <>
